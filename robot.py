@@ -12,7 +12,7 @@ import numpy as np
 
 import exp
 
-link_dict = {"ROS": "rl_ros", "VREP": "rl_vrep", "MODEL": "rl_vrep"}
+link_dict = {"ROS": "rl_ros", "VREP": "rl_vrep", "MODEL": "rl_vrep", "COPPELIA": "rl_zmq"}
 try:
     link_module = link_dict[exp.ENVIRONMENT_TYPE]
 except KeyError:
