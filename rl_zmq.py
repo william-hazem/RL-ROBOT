@@ -92,21 +92,6 @@ def connect():
     
     sim.stopSimulation()        # closes previous simulation
     sim.startSimulation()
-    # result, sim_state = client.simxGetSimulationState()
-    # result, sim_state = client.simxGetIntegerSignal('simRun', client.clientID)
-    # clientID = client.clientID
-    # clientID = vrep.simxStart(ip, port, True, True, 3000, 5)
-    # Connect to V-REP
-    # if sim_state == 0:
-    #     import sys
-
-    #     sys.exit(
-    #         "\nZMQ remote API server connection failed ("
-    #         + ip
-    #         + ":"
-    #         + str(port)
-    #         + "). Is V-REP running?"
-    #     )
     print("Connected to Robot")
     # show_msg("Python: Hello")
     time.sleep(0.5)

@@ -70,6 +70,16 @@ def setup(agent_elem, environment_elem):
     AGENT_ELEMENTS = agent_elem
     ENV_ELEMENTS = environment_elem
 
+    # Add environment elements to linkage stage 
+    link.HAS_GOAL_OBJECT = ("GOAL_OBJECT" in ENV_ELEMENTS)
+    
+    # Add agent elements to linkage stage
+    # some elements are common and don't need to be enabled (check the link file eg: rl_zmq.py)
+    link.HAS_KINECT = ("KINECT" in AGENT_ELEMENTS)
+    link.HAS_ARM = ("ARM" in AGENT_ELEMENTS)
+
+    link.setup_devices() # updates elements handlers
+
     mobilebase_pose2d = np.full(3, -1, dtype=np.float64)
     last_mobilebase_pose2d = np.full(3, -1, dtype=np.float64)
 
