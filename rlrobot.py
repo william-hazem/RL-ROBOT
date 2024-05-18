@@ -81,15 +81,17 @@ def run():
         robot.connect()  # Connect to V-REP / ROS
 
     if exp.CONTINUE_PREVIOUS_EXP:
-        prev_exp = __import__(exp.PREVIOUS_EXP_FILE)
+        # prev_exp = __import__(exp.PREVIOUS_EXP_FILE)
+        prev_exp = np.load(exp.PREVIOUS_EXP_FILE)
         print("NOTE: Continue experiments from: " + exp.PREVIOUS_EXP_FILE)
         time.sleep(3)
 
     # Experiment repetition loop ------------------------------------------
     for rep in range(exp.N_REPETITIONS):
         if exp.CONTINUE_PREVIOUS_EXP:
-            last_q, last_v = prev_exp.q, prev_exp.v
-            last_policy, last_q_count = prev_exp.policy, prev_exp.q_count
+            # data was stored as: Policy=lp.policy, V=lp.v, Q=lp.q, Q_count=lp.q_count
+            last_q, last_v = prev_exp['Q'], prev_exp['V']
+            last_policy, last_q_count = prev_exp['Policy'], prev_exp['Q_count']
         else:
             last_q = last_v = last_policy = last_q_count = None
 
